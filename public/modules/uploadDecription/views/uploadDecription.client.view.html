@@ -1,0 +1,47 @@
+<div class="container" style="margin-top:30px" ng-controller="UploadDecriptionController">
+    <div class="col-md-12">
+        <div ng-show="displaySucces" class="alert alert-success" role="alert">
+            <strong>Well done!</strong> Decription saved.<a href="#" class="alert-link">
+       </a>.
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <strong>Create New Decription</strong>
+                </h3></div>
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+                               ng-model="newDecription.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Decription name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Name"
+                               ng-model="newDecription.name">
+                    </div>
+
+                    <div style="">
+                        <div id="image" s3-upload bucket="'blove'"
+                             ng-model="credentials.image"
+                             s3-upload-options="{ getOptionsUri: credentials.s3OptionsUri }"
+                             bootstrap-version="3"></div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <ul style="list-style-type: none;">
+                            <li style="float: left;margin-right: 30px;" ng-repeat="img in newDecription.images">
+                                <img ng-src="{{img}}" title="" class="thumbnail" style="width: 150px; height: 150px;">
+                            </li>
+                        </ul>
+                    </div>
+                    <button ng-click="createDecription()" class="btn btn-sm btn-default">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+
+</div>
