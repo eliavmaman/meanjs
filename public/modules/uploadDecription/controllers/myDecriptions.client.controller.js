@@ -18,8 +18,8 @@ angular.module('uploadDecription').controller('MyDecriptionController',
           var decriptionList = response;
           for (var i = 0; i < decriptionList.length; i++) {
             var d = new Date(decriptionList[i].created);
-            var formatedDate = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
-            decriptionList[i].created = formatedDate;
+            decriptionList[i].created = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+
           }
           $scope.decriptions = decriptionList;
 
