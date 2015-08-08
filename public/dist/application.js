@@ -345,7 +345,12 @@ angular.module('uploadDecription').controller('MyDecriptionController', [
     };
     $scope.getUserDecription = function () {
       $http.get('/decriptions', { params: { email: $scope.authentication.user.email } }).success(function (response) {
-        $scope.decriptions = response;
+        var decriptionList = response;
+        for (var i = 0; i < decriptionList.length; i++) {
+          var d = new Date(decriptionList[i].created);
+          decriptionList[i].created = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+        }
+        $scope.decriptions = decriptionList;
       }).error(function (response) {
         $scope.error = response.message;
       });
